@@ -655,7 +655,10 @@ const LOGO_CONFIG=[
         <div class="direct">Or reach the firm directly at <a href="mailto:denise@visionaryleadershipgroup.com">denise@visionaryleadershipgroup.com</a></div>
       </div>
       <div class="reveal" style="transition-delay:.15s">
-        <form class="form" id="inquiryForm">
+        <form class="form" id="inquiryForm" action="https://formspree.io/f/mlgqkkpn" method="POST">
+          <input type="hidden" name="_subject" value="New inquiry — visionaryleadershipgroup.com">
+          <input type="hidden" name="_next" id="formNext" value="">
+          <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true">
           <div class="field"><label for="f-name">Name</label><input id="f-name" name="name" type="text" placeholder="Your name" required></div>
           <div class="field"><label for="f-firm">Firm</label><input id="f-firm" name="firm" type="text" placeholder="Fund or firm" required></div>
           <div class="field"><label for="f-email">Email</label><input id="f-email" name="email" type="email" placeholder="you@firm.com" required></div>
@@ -834,30 +837,16 @@ document.querySelectorAll("[data-img]").forEach(function(el){
   setStep(0);
 })();
 
-/* ---------- contact form (FORM_ENDPOINT blank = mailto fallback) ---------- */
+/* ---------- contact form: native browser POST to Formspree (best spam-trust signals) ---------- */
 (function initForm(){
   const form = document.getElementById('inquiryForm');
   if (!form) return;
-  form.addEventListener('submit', async function(e){
-    e.preventDefault();
-    const f = e.target, status = document.getElementById('formStatus');
-    const data = { name:f.name.value, firm:f.firm.value, email:f.email.value, context:f.context.value };
-    if (FORM_ENDPOINT) {
-      status.textContent = 'Sending…'; status.classList.remove('ok');
-      try {
-        const res = await fetch(FORM_ENDPOINT, { method:'POST', headers:{'Content-Type':'application/json','Accept':'application/json'}, body: JSON.stringify(data) });
-        if (res.ok) { status.textContent = 'Received. Denise will reply personally and in confidence.'; status.classList.add('ok'); f.reset(); }
-        else { throw new Error(); }
-      } catch (err) {
-        status.textContent = 'Something went wrong — please email ' + CONTACT_EMAIL + '.';
-      }
-    } else {
-      const subject = encodeURIComponent('Private inquiry — ' + (f.firm.value || 'PE firm'));
-      const body = encodeURIComponent('Name: ' + f.name.value + '\nFirm: ' + f.firm.value + '\nEmail: ' + f.email.value + '\n\nContext:\n' + (f.context.value || '(none provided)'));
-      window.location.href = 'mailto:' + CONTACT_EMAIL + '?subject=' + subject + '&body=' + body;
-      status.textContent = 'Opening your email client…'; status.classList.add('ok');
-    }
-  });
+  const next = document.getElementById('formNext');
+  if (next) next.value = location.origin + location.pathname + '?sent=1#contact';
+  if (new URLSearchParams(location.search).get('sent') === '1') {
+    const status = document.getElementById('formStatus');
+    if (status) { status.textContent = 'Received. Denise will reply personally and in confidence.'; status.classList.add('ok'); }
+  }
 })();
 
 /* ---------- chatbot (scripted keyword lookup — not generative) ---------- */
