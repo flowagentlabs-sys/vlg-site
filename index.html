@@ -847,6 +847,9 @@ document.querySelectorAll("[data-img]").forEach(function(el){
     const status = document.getElementById('formStatus');
     if (status) { status.textContent = 'Received. Denise will reply personally and in confidence.'; status.classList.add('ok'); }
   }
+  /* Returning via the browser Back button restores typed values from cache — always clear them */
+  window.addEventListener('pageshow', function(e){ if (e.persisted) form.reset(); });
+  form.addEventListener('submit', function(){ setTimeout(function(){ form.reset(); }, 800); });
 })();
 
 /* ---------- chatbot (scripted keyword lookup — not generative) ---------- */
