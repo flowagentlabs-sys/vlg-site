@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>First-100-Days Execution Risk Scan — Visionary Leadership Group</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --indigo:#1B2A4A; --gold:#C8A24B; --teal:#2F7E7A; --ink:#14181F; --warm:#F7F4EF; --white:#fff;
+    --muted:#5C6373; --line:#E2DCD1; --indigo-10:rgba(27,42,74,.06); --indigo-20:rgba(27,42,74,.12);
+    --green:#2F7E7A; --amber:#C6902F; --red:#B23A2E;
+    --green-soft:rgba(47,126,122,.10); --amber-soft:rgba(198,144,47,.12); --red-soft:rgba(178,58,46,.10);
+    --fd:'Fraunces',Georgia,serif; --fb:'Inter',-apple-system,sans-serif; --fm:'IBM Plex Mono',monospace;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:#ece7df;color:var(--ink);font-family:var(--fb);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased;}
+  .wrap{max-width:760px;margin:0 auto;padding:30px 18px 80px;}
+  .card{background:var(--warm);border:1px solid var(--line);border-radius:12px;box-shadow:0 10px 40px rgba(20,24,31,.10);overflow:hidden;}
+  .mast{background:var(--indigo);color:var(--warm);border-top:3px solid var(--gold);padding:26px 30px 24px;}
+  .wm{font-family:var(--fd);font-weight:600;font-size:15px;letter-spacing:-.01em;} .wm span{color:var(--gold);}
+  .eyebrow{font-family:var(--fm);font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:#c9d2e2;margin-top:16px;}
+  .eyebrow::before{content:'';display:inline-block;width:16px;height:2px;background:var(--gold);vertical-align:middle;margin-right:9px;}
+  h1{font-family:var(--fd);font-weight:600;color:var(--warm);font-size:clamp(1.7rem,4.5vw,2.3rem);line-height:1.1;margin:8px 0 0;max-width:20ch;}
+  .mast p{color:rgba(247,244,239,.82);font-size:1.02rem;margin:14px 0 0;max-width:56ch;}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px;}
+  .chip{font-family:var(--fm);font-size:10.5px;letter-spacing:.04em;color:rgba(247,244,239,.7);border:1px solid rgba(247,244,239,.22);border-radius:20px;padding:5px 12px;}
+  .inner{padding:26px 30px 30px;}
+  .lead{color:#3a4256;font-size:1rem;margin:0 0 8px;}
+
+  .btn{font-family:var(--fb);font-weight:600;font-size:15px;padding:13px 26px;border-radius:8px;border:none;cursor:pointer;transition:all .15s;}
+  .btn-primary{background:var(--indigo);color:var(--warm);} .btn-primary:hover{background:#24365a;}
+  .btn-ghost{background:transparent;color:var(--indigo);border:1px solid var(--indigo-20);} .btn-ghost:hover{border-color:var(--teal);}
+  .start-row{margin-top:18px;}
+
+  fieldset{border:none;margin:0;padding:0;} legend{padding:0;}
+  .dim{margin:28px 0 0;border-top:1px solid var(--indigo-20);padding-top:22px;}
+  .dim:first-of-type{border-top:none;padding-top:6px;}
+  .dim-head{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:4px;}
+  .dim-n{font-family:var(--fm);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);font-weight:600;}
+  .dim-name{font-family:var(--fd);font-size:1.25rem;font-weight:600;color:var(--indigo);}
+  .dim-sub{font-size:.9rem;color:var(--muted);margin:0 0 16px;}
+
+  .q{margin:0 0 16px;border:1px solid var(--indigo-20);border-radius:10px;background:var(--white);padding:15px 17px;}
+  .q.unanswered-flag{border-color:var(--red);}
+  .q-text{font-size:.98rem;color:var(--ink);margin-bottom:11px;font-weight:500;}
+  .opts{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;}
+  @media(max-width:560px){.opts{grid-template-columns:1fr;}}
+  .opt{position:relative;}
+  .opt input{position:absolute;opacity:0;width:0;height:0;}
+  .opt label{display:block;cursor:pointer;border:1px solid var(--line);border-radius:8px;padding:9px 11px;font-size:.86rem;color:#3a4256;transition:all .12s;background:var(--warm);height:100%;}
+  .opt label .k{font-family:var(--fm);font-size:9px;letter-spacing:.06em;text-transform:uppercase;display:block;margin-bottom:2px;color:var(--muted);}
+  .opt label:hover{border-color:var(--teal);}
+  .opt input:checked + label{border-width:1.5px;font-weight:500;}
+  .opt.g input:checked + label{border-color:var(--green);background:var(--green-soft);color:#1f5b58;} .opt.g input:checked + label .k{color:var(--green);}
+  .opt.a input:checked + label{border-color:var(--amber);background:var(--amber-soft);color:#7a5a12;} .opt.a input:checked + label .k{color:var(--amber);}
+  .opt.r input:checked + label{border-color:var(--red);background:var(--red-soft);color:#8a2c22;} .opt.r input:checked + label .k{color:var(--red);}
+
+  .submit-row{margin-top:26px;display:flex;align-items:center;gap:16px;flex-wrap:wrap;}
+  .err{color:var(--red);font-size:.9rem;font-weight:500;display:none;}
+  .err.show{display:block;}
+
+  /* result */
+  #result{display:none;}
+  .band{border-radius:10px;padding:20px 22px;margin-bottom:22px;color:var(--warm);}
+  .band .bl{font-family:var(--fm);font-size:11px;letter-spacing:.14em;text-transform:uppercase;opacity:.85;}
+  .band h2{font-family:var(--fd);font-weight:600;font-size:1.6rem;margin:4px 0 6px;color:var(--warm);}
+  .band p{margin:0;font-size:.98rem;opacity:.92;max-width:60ch;}
+  .band.b-green{background:#27605c;} .band.b-watch{background:#7a5a12;} .band.b-risk{background:#8a2f26;} .band.b-high{background:#6f221b;}
+
+  .tally{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:22px;}
+  .tal{flex:1;min-width:120px;border:1px solid var(--indigo-20);border-radius:9px;background:var(--white);padding:12px 14px;}
+  .tal .num{font-family:var(--fd);font-size:1.6rem;font-weight:600;line-height:1;}
+  .tal .lb{font-family:var(--fm);font-size:9.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);margin-top:4px;}
+  .tal.g .num{color:var(--green);} .tal.a .num{color:var(--amber);} .tal.r .num{color:var(--red);}
+
+  .dimrow{display:flex;align-items:center;gap:14px;border:1px solid var(--indigo-20);border-radius:9px;background:var(--white);padding:12px 15px;margin-bottom:9px;}
+  .dimrow .dn{font-family:var(--fd);font-weight:600;color:var(--indigo);font-size:1rem;flex:1;}
+  .dots{display:flex;gap:5px;} .dot{width:13px;height:13px;border-radius:50%;border:1px solid rgba(0,0,0,.08);}
+  .dot.g{background:var(--green);} .dot.a{background:var(--amber);} .dot.r{background:var(--red);} .dot.o{background:var(--indigo-10);}
+  .dimrow .st{font-family:var(--fm);font-size:9.5px;letter-spacing:.05em;text-transform:uppercase;width:78px;text-align:right;color:var(--muted);}
+
+  .focus{margin:22px 0;border-left:3px solid var(--gold);background:var(--white);border-radius:0 10px 10px 0;padding:16px 18px;}
+  .focus .fl{font-family:var(--fm);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--teal);font-weight:600;margin-bottom:6px;}
+  .focus h3{font-family:var(--fd);font-size:1.15rem;color:var(--indigo);margin:0 0 5px;font-weight:600;}
+  .focus p{margin:0;font-size:.95rem;color:#3a4256;}
+
+  .cta{background:var(--indigo);color:var(--warm);border-radius:11px;padding:22px 24px;margin:22px 0 8px;}
+  .cta h3{font-family:var(--fd);color:var(--warm);font-size:1.2rem;margin:0 0 8px;font-weight:600;}
+  .cta p{margin:0 0 15px;font-size:.96rem;color:rgba(247,244,239,.85);}
+  .cta .btn-cta{background:var(--gold);color:var(--ink);} .cta .btn-cta:hover{background:#d3b063;}
+  .cta .ph{font-family:var(--fm);font-size:9.5px;color:rgba(247,244,239,.5);margin-top:10px;}
+
+  .capture{border:1px solid var(--indigo-20);border-left:3px solid var(--teal);border-radius:11px;background:var(--white);padding:20px 22px;margin:14px 0 8px;}
+  .capture .cap-eyebrow{font-family:var(--fm);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--teal);font-weight:600;margin-bottom:6px;}
+  .capture h3{font-family:var(--fd);color:var(--indigo);font-size:1.15rem;margin:0 0 6px;font-weight:600;}
+  .capture p{margin:0 0 14px;font-size:.93rem;color:#3a4256;}
+  .cap-form{display:flex;gap:10px;flex-wrap:wrap;}
+  .cap-form input{flex:1;min-width:210px;font-family:var(--fb);font-size:15px;padding:12px 14px;border:1px solid var(--line);border-radius:8px;color:var(--ink);background:var(--warm);}
+  .cap-form input:focus{outline:2px solid var(--teal);outline-offset:1px;border-color:var(--teal);}
+  .cap-err{color:var(--red);font-size:.85rem;font-weight:500;margin-top:9px;display:none;}
+  .cap-err.show{display:block;}
+  .cap-note{font-family:var(--fm);font-size:9.5px;color:var(--muted);margin-top:11px;letter-spacing:.02em;}
+  .cap-done{font-size:.98rem;color:#1f5b58;font-weight:500;}
+  .cap-done b{color:var(--indigo);}
+
+  .honest{font-size:.85rem;color:var(--muted);border-top:1px solid var(--indigo-20);padding-top:16px;margin-top:24px;line-height:1.55;}
+  .retake{margin-top:16px;}
+  footer{font-family:var(--fm);font-size:10px;color:#8a8470;text-align:center;padding:24px 18px 0;letter-spacing:.03em;}
+
+  /* ---------- print / save-as-PDF ----------
+     The read is the deliverable. Everything that only makes sense on a screen
+     — the intro, the buttons, the email form — is dropped, so what prints is
+     the person's own result and nothing else. */
+  .cap-print{margin:0 0 14px;}
+  @media print{
+    body{background:#fff;padding:0;}
+    .wrap{max-width:none;}
+    .card{border:none;box-shadow:none;}
+    .chips,#introText,.start-row,.retake,.capture,.cap-print,#scanForm{display:none !important;}
+    .inner > .focus{display:none !important;}   /* the on-screen premise block */
+    .cta .btn{display:none !important;}          /* keep the words, drop the button */
+    .band,.dim,.focus,.cta,.honest{break-inside:avoid;}
+    a[href]::after{content:"";}                  /* no printed URLs after links */
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="card">
+    <div class="mast">
+      <div class="wm">Visionary Leadership Group<span>.</span></div>
+      <div class="eyebrow">First-100-Days · Execution Risk Scan</div>
+      <h1>Can your team execute the first 100 days?</h1>
+      <p>Twelve honest questions about how your leadership team actually runs the plan — and where execution is most likely to slip before it shows up in the numbers.</p>
+      <div class="chips"><span class="chip">12 questions</span><span class="chip">~10 minutes</span><span class="chip">Private — nothing leaves this page</span></div>
+    </div>
+
+    <div class="inner">
+      <div class="focus" style="margin:2px 0 20px;">
+        <div class="fl">The premise</div>
+        <h3>Confront the brutal facts — early</h3>
+        <p>The companies that pull away rarely have fewer problems. They face the hard truths of their situation sooner — a discipline Jim Collins named <em>&ldquo;confront the brutal facts&rdquo;</em> in <em>Good to Great</em>. This scan is built to do exactly that: surface where your first 100 days will leak while it is still cheap to fix.</p>
+      </div>
+      <p class="lead" id="introText">Answer as honestly as you can for the company or team you're closest to. There are no right answers — only where you're strong and where you'll leak. You'll get your read at the end.</p>
+      <div class="start-row"><button class="btn btn-primary" id="startBtn">Start the scan →</button></div>
+
+      <form id="scanForm" style="display:none;">
+        <div id="quiz"></div>
+        <div class="submit-row">
+          <button type="submit" class="btn btn-primary" id="seeBtn">See my execution-risk read</button>
+          <span class="err" id="err">Please answer all 12 — the read only works if it's complete.</span>
+        </div>
+      </form>
+
+      <div id="result"></div>
+    </div>
+  </div>
+  <footer>Visionary Leadership Group · V·A·A·T Method™ (Visualize · Analyze · Act · Transform) · A self-read to start a conversation, not a formal diagnostic.</footer>
+</div>
+
+<script>
+(function(){
+  // Each question maps to a behaviorally-anchored indicator from the V·A·A·T Diagnostic spec (v0.9),
+  // rewritten as a CEO self-assessment. Answer values: 0 = green (in place), 1 = amber (partly), 2 = red (not yet).
+  var DIMS = [
+    {key:'V', n:'Dimension I', name:'Visualize', sub:'Turning the plan into an operating picture the team can act on.',
+     fail:'the plan lives in the data room, not in the Monday meeting.'},
+    {key:'A', n:'Dimension II', name:'Analyze', sub:'Using information to see and manage variance before it compounds.',
+     fail:'problems show up in the monthly numbers instead of before them.'},
+    {key:'C', n:'Dimension III', name:'Act', sub:'Making the plan-critical decisions, at the right speed, and making them stick.',
+     fail:'the right calls are understood but deferred — usually the ones that carry personal cost.'},
+    {key:'T', n:'Dimension IV', name:'Transform', sub:'Building the durability that lets execution survive change.',
+     fail:'performance runs through one person and will not survive change.'}
+  ];
+  var Q = [
+    {d:0, t:'I can state our value-creation plan as a handful of concrete operating priorities for the next 90 days — not just financial targets.'},
+    {d:0, t:'My managers one or two levels down can independently say what the plan requires of them this quarter.'},
+    {d:0, t:'We run the plan as a standing operating rhythm (a regular review cadence), not as an annual event.'},
+    {d:1, t:'We have the KPIs our business actually needs, and the team genuinely uses them — not just for the board.'},
+    {d:1, t:'Bad news travels up fast: my team surfaces variance before the board (or I) have to ask.'},
+    {d:1, t:'The people who can act on unit-level numbers (by site, job, product…) can actually see them in time.'},
+    {d:2, t:'We make plan-critical decisions on good-enough information, quickly — we don’t wait for perfect certainty.'},
+    {d:2, t:'Hard calls that carry personal cost (a talent upgrade, a reprice, an integration) get made — not endlessly re-agendized.'},
+    {d:2, t:'When we commit to something at the board, it holds — commitments don’t quietly become moving deadlines.'},
+    {d:3, t:'Execution doesn’t route through one person — there’s a real second layer of operating ownership below the founder/CEO.'},
+    {d:3, t:'We’re building bench and succession depth ahead of need, not scrambling when a seat opens.'},
+    {d:3, t:'When we fix something, it stays fixed — the change survives the person who drove it.'}
+  ];
+  var OPTS = [
+    {v:0, cls:'g', k:'In place', label:'Consistently true'},
+    {v:1, cls:'a', k:'Partly', label:'There but uneven'},
+    {v:2, cls:'r', k:'Not yet', label:'This is a gap'}
+  ];
+
+  var quiz = document.getElementById('quiz');
+  DIMS.forEach(function(dim, di){
+    var fs = document.createElement('fieldset');
+    fs.className = 'dim';
+    var head = '<div class="dim-head"><span class="dim-n">'+dim.n+'</span><span class="dim-name">'+dim.name+'</span></div><div class="dim-sub">'+dim.sub+'</div>';
+    fs.innerHTML = head;
+    Q.forEach(function(q, qi){
+      if(q.d !== di) return;
+      var block = document.createElement('div');
+      block.className='q'; block.id='q'+qi+'-block';
+      var opts = OPTS.map(function(o){
+        var id='q'+qi+'_'+o.v;
+        return '<div class="opt '+o.cls+'"><input type="radio" name="q'+qi+'" id="'+id+'" value="'+o.v+'"><label for="'+id+'"><span class="k">'+o.k+'</span>'+o.label+'</label></div>';
+      }).join('');
+      block.innerHTML='<div class="q-text">'+q.t+'</div><div class="opts">'+opts+'</div>';
+      fs.appendChild(block);
+    });
+    quiz.appendChild(fs);
+  });
+
+  document.getElementById('startBtn').addEventListener('click', function(){
+    this.parentNode.style.display='none';
+    document.getElementById('introText').style.display='none';
+    document.getElementById('scanForm').style.display='block';
+    document.getElementById('scanForm').scrollIntoView({behavior:'smooth', block:'start'});
+  });
+
+  function readAnswers(){
+    var a=[]; for(var i=0;i<12;i++){ var el=document.querySelector('input[name="q'+i+'"]:checked'); a.push(el?parseInt(el.value,10):null); } return a;
+  }
+
+  // Exposed for verification.
+  function compute(a){
+    var greens=0,ambers=0,reds=0, dimLoad=[0,0,0,0], dimReds=[0,0,0,0];
+    a.forEach(function(v,i){
+      if(v===0)greens++; else if(v===1)ambers++; else if(v===2)reds++;
+      dimLoad[Q[i].d]+=v; if(v===2)dimReds[Q[i].d]++;
+    });
+    var band;
+    if(reds===0 && ambers<=2) band='green';
+    else if(reds<=1) band='watch';
+    else if(reds<=3) band='risk';
+    else band='high';
+    // weakest dimension = highest load, tiebreak by reds then order
+    var worst=0; for(var d=1;d<4;d++){ if(dimLoad[d]>dimLoad[worst] || (dimLoad[d]===dimLoad[worst] && dimReds[d]>dimReds[worst])) worst=d; }
+    return {greens:greens,ambers:ambers,reds:reds,dimLoad:dimLoad,dimReds:dimReds,band:band,worst:worst};
+  }
+  window.__computeScan = compute; // test hook
+
+  var BANDS = {
+    green:{cls:'b-green', label:'On plan', h:'Execution-ready', p:'Nothing here reads as a red flag. Keep an eye on any "partly" answers — those are the watch items that turn into leaks if the pace picks up.'},
+    watch:{cls:'b-watch', label:'One to watch', h:'Mostly on plan — one flag', p:'One signal came back red. It is not a crisis, but it is the first place the plan will slip if it is left unowned. Worth naming now, while it is cheap to fix.'},
+    risk:{cls:'b-risk', label:'At risk', h:'This is where your plan leaks', p:'Two or three signals came back red. That is the pattern that predicts slippage in the first 100 days — usually concentrated in one V·A·A·T dimension. The reds below are where to look first.'},
+    high:{cls:'b-high', label:'High execution risk', h:'Execution is exposed', p:'Four or more signals came back red. The value-creation plan is carrying real execution risk across more than one dimension. This is the read a sponsor most wants surfaced early — before it reaches the numbers.'}
+  };
+
+  function dimStatus(load){ if(load>=4) return ['Constraint','r']; if(load>=2) return ['Developing','a']; return ['Strength','g']; }
+
+  function render(res, a){
+    var b=BANDS[res.band];
+    var html='';
+    html+='<div class="band '+b.cls+'"><div class="bl">Your first-100-days read</div><h2>'+b.h+'</h2><p>'+b.p+'</p></div>';
+    html+='<div class="tally">'
+      +'<div class="tal g"><div class="num">'+res.greens+'</div><div class="lb">In place</div></div>'
+      +'<div class="tal a"><div class="num">'+res.ambers+'</div><div class="lb">Partly</div></div>'
+      +'<div class="tal r"><div class="num">'+res.reds+'</div><div class="lb">Not yet</div></div></div>';
+    html+='<div>';
+    DIMS.forEach(function(dim,di){
+      var dots=''; a.forEach(function(v,i){ if(Q[i].d===di){ var c=v===0?'g':v===1?'a':'r'; dots+='<span class="dot '+c+'"></span>'; } });
+      var st=dimStatus(res.dimLoad[di]);
+      html+='<div class="dimrow"><span class="dn">'+dim.name+'</span><span class="dots">'+dots+'</span><span class="st" style="color:var(--'+(st[1]==='r'?'red':st[1]==='a'?'amber':'green')+')">'+st[0]+'</span></div>';
+    });
+    html+='</div>';
+    if(res.reds>0){
+      var w=DIMS[res.worst];
+      html+='<div class="focus"><div class="fl">Look here first</div><h3>'+w.name+'</h3><p>Your weakest dimension. When '+w.name+' is a gap, '+w.fail+'</p></div>';
+    }
+    html+='<div class="cta"><h3>Want to know what to sequence first?</h3>'
+      +'<p>If two or more came back red, that is where the first 100 days will leak. A short Leadership Dialogue turns this self-read into the three things worth sequencing first — the brutal facts, made actionable. No pitch.</p>'
+      +'<a class="btn btn-cta" href="https://calendly.com/denise-visionaryleadershipgroup/leadership-dialogues-30" target="_blank" rel="noopener noreferrer" style="display:inline-block;text-decoration:none">Book a Leadership Dialogue</a></div>';
+    html+='<div class="capture" id="captureBlock">'
+      +'<div class="cap-eyebrow">Prefer to take it away?</div>'
+      +'<h3>Take your read with you</h3>'
+      +'<p>Save it as a PDF now, or leave your name and email and we\'ll send it. No list, no pitch — just your results.</p>'
+      +'<div class="cap-print"><button type="button" class="btn btn-ghost" id="printBtn">&#8595; Save as PDF</button></div>'
+      +'<form id="leadForm" class="cap-form"><input type="text" id="leadName" placeholder="Your name" autocomplete="name" required><input type="email" id="leadEmail" placeholder="you@company.com" autocomplete="email" required><button type="submit" class="btn btn-primary" id="capBtn">Email me the summary</button></form>'
+      +'<div class="cap-err" id="capErr">Please enter your name and a valid email address.</div>'
+      +'<div class="cap-note">Sent by a person, not an autoresponder. We use your details only to send this read.</div></div>';
+    html+='<div class="honest"><strong>How to read this.</strong> This is a self-assessment, not a formal diagnostic — it reflects how you answered, and the point is to surface where to look, not to grade anyone. VLG’s full read (the paid instrument) rates the same V·A·A·T dimensions against evidence, with a second analyst for consistency. Proof on request, never on display.</div>';
+    html+='<div class="retake"><button type="button" class="btn btn-ghost" id="retakeBtn">↺ Retake the scan</button></div>';
+
+    var r=document.getElementById('result');
+    r.innerHTML=html; r.style.display='block';
+    document.getElementById('scanForm').style.display='none';
+    r.scrollIntoView({behavior:'smooth', block:'start'});
+    var printBtn=document.getElementById('printBtn');
+    if(printBtn){ printBtn.addEventListener('click', function(){ window.print(); }); }
+    document.getElementById('retakeBtn').addEventListener('click', function(){
+      document.querySelectorAll('input[type=radio]').forEach(function(x){x.checked=false;});
+      r.style.display='none'; r.innerHTML='';
+      document.getElementById('scanForm').style.display='block';
+      document.querySelectorAll('.q').forEach(function(q){q.classList.remove('unanswered-flag');});
+      document.getElementById('err').classList.remove('show');
+      document.getElementById('scanForm').scrollIntoView({behavior:'smooth', block:'start'});
+    });
+    var leadForm=document.getElementById('leadForm');
+    if(leadForm){ leadForm.addEventListener('submit', function(ev){
+      ev.preventDefault();
+      var errEl=document.getElementById('capErr');
+      var btn=document.getElementById('capBtn');
+      var name=(document.getElementById('leadName').value||'').trim();
+      var email=(document.getElementById('leadEmail').value||'').trim();
+      var okEmail=/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+      if(!name || !okEmail){
+        errEl.textContent='Please enter your name and a valid email address.';
+        errEl.classList.add('show'); return;
+      }
+      errEl.classList.remove('show');
+
+      /* The wording of every red signal travels with the scores, so the read
+         VLG sees says what they actually flagged — not a bare number. This
+         page stays the single source of truth for the question wording. */
+      var redSignals=[]; a.forEach(function(v,i){ if(v===2) redSignals.push(Q[i].t); });
+
+      var payload={ name:name, email:email, band:res.band,
+        greens:res.greens, ambers:res.ambers, reds:res.reds,
+        dimLoad:res.dimLoad, dimReds:res.dimReds, worst:res.worst,
+        redSignals:redSignals };
+      window.__lastLead=payload; /* kept so nothing is lost if the send fails */
+
+      if(btn){ btn.disabled=true; btn.textContent='Sending…'; }
+
+      /* Set window.VLG_SCAN_ENDPOINT to point at a local CRM while testing. */
+      var endpoint=window.VLG_SCAN_ENDPOINT||'https://crm4pe-production.up.railway.app/api/scan';
+      var safe=function(t){ return String(t).replace(/[<&>]/g,''); };
+
+      var done=function(){
+        document.getElementById('captureBlock').innerHTML=
+          '<div class="cap-eyebrow">You\'re set</div>'
+          +'<div class="cap-done">&#10003; Thanks — we\'ve got it. Your one-page read will go to <b>'+safe(email)+'</b>.</div>'
+          +'<div class="cap-print" style="margin:12px 0 0"><button type="button" class="btn btn-ghost" id="printBtnDone">&#8595; Save as PDF now</button></div>'
+          +'<div class="cap-note">Sent by a person, not an autoresponder.</div>';
+        var pd=document.getElementById('printBtnDone');
+        if(pd){ pd.addEventListener('click', function(){ window.print(); }); }
+      };
+      var failed=function(){
+        if(btn){ btn.disabled=false; btn.textContent='Email me the summary'; }
+        errEl.textContent='We could not send that just now. Please try again, or use the booking link above.';
+        errEl.classList.add('show');
+      };
+
+      fetch(endpoint,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)})
+        .then(function(r){ r.ok?done():failed(); })
+        .catch(failed);
+    }); }
+  }
+
+  document.getElementById('scanForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    var a=readAnswers(); var missing=false, first=null;
+    a.forEach(function(v,i){
+      var block=document.getElementById('q'+i+'-block');
+      if(v===null){ missing=true; block.classList.add('unanswered-flag'); if(first===null)first=block; }
+      else block.classList.remove('unanswered-flag');
+    });
+    if(missing){ document.getElementById('err').classList.add('show'); if(first)first.scrollIntoView({behavior:'smooth',block:'center'}); return; }
+    document.getElementById('err').classList.remove('show');
+    render(compute(a), a);
+  });
+})();
+</script>
+</body>
+</html>
