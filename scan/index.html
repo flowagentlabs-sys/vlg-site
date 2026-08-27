@@ -278,11 +278,11 @@
     html+='<div class="capture" id="captureBlock">'
       +'<div class="cap-eyebrow">Prefer to take it away?</div>'
       +'<h3>Take your read with you</h3>'
-      +'<p>Save it as a PDF now, or leave your name and email and we\'ll send it. No list, no pitch — just your results.</p>'
+      +'<p>Save it as a PDF now — that is your copy, straight away. Or leave your details and someone from VLG will follow up personally. No list, no pitch.</p>'
       +'<div class="cap-print"><button type="button" class="btn btn-ghost" id="printBtn">&#8595; Save as PDF</button></div>'
-      +'<form id="leadForm" class="cap-form"><input type="text" id="leadName" placeholder="Your name" autocomplete="name" required><input type="email" id="leadEmail" placeholder="you@company.com" autocomplete="email" required><button type="submit" class="btn btn-primary" id="capBtn">Email me the summary</button></form>'
+      +'<form id="leadForm" class="cap-form"><input type="text" id="leadName" placeholder="Your name" autocomplete="name" required><input type="email" id="leadEmail" placeholder="you@company.com" autocomplete="email" required><button type="submit" class="btn btn-primary" id="capBtn">Ask for a follow-up</button></form>'
       +'<div class="cap-err" id="capErr">Please enter your name and a valid email address.</div>'
-      +'<div class="cap-note">Sent by a person, not an autoresponder. We use your details only to send this read.</div></div>';
+      +'<div class="cap-note">A person reads every one of these. No automated sequence, and we use your details only to reply.</div></div>';
     html+='<div class="honest"><strong>How to read this.</strong> This is a self-assessment, not a formal diagnostic — it reflects how you answered, and the point is to surface where to look, not to grade anyone. VLG’s full read (the paid instrument) rates the same V·A·A·T dimensions against evidence, with a second analyst for consistency. Proof on request, never on display.</div>';
     html+='<div class="retake"><button type="button" class="btn btn-ghost" id="retakeBtn">↺ Retake the scan</button></div>';
 
@@ -334,14 +334,14 @@
       var done=function(){
         document.getElementById('captureBlock').innerHTML=
           '<div class="cap-eyebrow">You\'re set</div>'
-          +'<div class="cap-done">&#10003; Thanks — we\'ve got it. Your one-page read will go to <b>'+safe(email)+'</b>.</div>'
+          +'<div class="cap-done">&#10003; Thanks — we\'ve got it. Someone from VLG will be in touch at <b>'+safe(email)+'</b>.</div>'
           +'<div class="cap-print" style="margin:12px 0 0"><button type="button" class="btn btn-ghost" id="printBtnDone">&#8595; Save as PDF now</button></div>'
-          +'<div class="cap-note">Sent by a person, not an autoresponder.</div>';
+          +'<div class="cap-note">A person reads every one of these. No automated sequence.</div>';
         var pd=document.getElementById('printBtnDone');
         if(pd){ pd.addEventListener('click', function(){ window.print(); }); }
       };
       var failed=function(){
-        if(btn){ btn.disabled=false; btn.textContent='Email me the summary'; }
+        if(btn){ btn.disabled=false; btn.textContent='Ask for a follow-up'; }
         errEl.textContent='We could not send that just now. Please try again, or use the booking link above.';
         errEl.classList.add('show');
       };
