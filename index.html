@@ -189,7 +189,11 @@
   .vaat-panel .vp-body h3{font-size:clamp(1.5rem,3vw,2.1rem);color:var(--fg)}
   .vaat-panel .vp-body p{font-size:1rem;line-height:1.6;margin-top:16px;color:var(--fg-soft);max-width:56ch}
   .vaat-panel .vp-map{font-family:'IBM Plex Mono',monospace;font-size:.72rem;color:var(--gold);margin-top:22px;text-transform:uppercase;letter-spacing:.06em}
+  .step-hint-m{display:none}
   @media(max-width:900px){
+    /* the rail stacks here, so the hint moves below it — under "Exit-Readiness" */
+    .step-hint-d{display:none}
+    .step-hint-m{display:block;margin-top:16px;text-align:left}
     .hold-rail{grid-template-columns:1fr}
     .vaat-tabs{grid-template-columns:1fr 1fr}
     .vaat-panel{grid-template-columns:1fr}
@@ -212,15 +216,15 @@
   .op-card:hover .rule{width:90px;background:var(--gold)}
 
   /* ---------- room band (human statement) ---------- */
-  .room{position:relative;min-height:78vh;display:flex;align-items:flex-end;overflow:hidden}
+  .room{position:relative;min-height:78vh;display:flex;align-items:flex-start;overflow:hidden}
   .room .bg{position:absolute;inset:0;background-size:cover;background-position:center 30%}
   .room .scrim{position:absolute;inset:0;background:linear-gradient(100deg,rgba(20,24,31,.93) 0%,rgba(20,24,31,.86) 34%,rgba(20,24,31,.55) 60%,rgba(20,24,31,.30) 100%)}
   @media(max-width:760px){
-    .room .scrim{background:linear-gradient(180deg,rgba(20,24,31,.35),rgba(20,24,31,.88))}
+    .room .scrim{background:linear-gradient(180deg,rgba(20,24,31,.90) 0%,rgba(20,24,31,.72) 45%,rgba(20,24,31,.42) 100%)}
     /* the room sits on the right of this frame; a centred crop lands on the glass divider */
     .room .bg{background-position:72% 32%}
   }
-  .room .wrap{position:relative;padding-top:120px;padding-bottom:90px}
+  .room .wrap{position:relative;padding-top:clamp(64px,9vh,120px);padding-bottom:90px}
   .room h2{color:var(--warm);font-size:clamp(2rem,4.6vw,3.6rem);max-width:22ch}
   .room p{margin-top:20px;color:rgba(247,244,239,.85);max-width:58ch}
 
@@ -496,13 +500,14 @@
         <div class="eyebrow gold">The framework</div>
         <h2>The V<span class="gold">·</span>A<span class="gold">·</span>A<span class="gold">·</span>T Method™</h2>
       </div>
-      <span class="eyebrow" style="color:var(--fg-faint)">Select a step</span>
+      <span class="eyebrow step-hint-d" style="color:var(--fg-faint)">Select a step</span>
     </div>
     <div class="hold-rail reveal">
       <div class="phase" data-phase="0">Diligence &amp; First 100 Days</div>
       <div class="phase" data-phase="1">Value-Creation Period</div>
       <div class="phase" data-phase="2">Exit-Readiness</div>
     </div>
+    <span class="eyebrow step-hint-m" style="color:var(--fg-faint)">Select a step</span>
     <div class="vaat-tabs reveal">
       <button class="vaat-tab active" data-step="0"><span class="vaat-step">Step 01</span><span class="word">Visualize</span></button>
       <button class="vaat-tab" data-step="1"><span class="vaat-step">Step 02</span><span class="word">Analyze</span></button>
@@ -959,6 +964,9 @@ setTimeout(function(){
   /* persp1 is the only PORTRAIT photo on the site; in a wide short box its face is taller than
      the visible window, so this slot alone gets a taller box and a face-framed crop. */
   .post-hero[data-img="persp1"]{height:clamp(320px,44vw,540px);background-position:center 25%}
+  /* persp2: four faces sitting high in the frame (about 12%-44% down). A centred crop shows
+     30%-70% and cuts them at the eyes. persp3 is architecture and needs no framing. */
+  .post-hero[data-img="persp2"]{height:clamp(320px,36vw,420px);background-position:center 8%}
   .post-body{max-width:64ch;margin-top:34px}
   .post-body p{color:var(--fg-soft);line-height:1.75;font-size:1.02rem;margin-bottom:18px}
   .post-body p strong{color:var(--fg)}
