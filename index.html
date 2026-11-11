@@ -631,24 +631,28 @@
   .logo-tile{width:260px;height:80px;flex:none;display:flex;align-items:center;justify-content:center;border-right:1px solid var(--card-line);padding:0 22px;text-decoration:none}
   .logo-tile span{font-family:'Fraunces',serif;font-size:17px;font-weight:500;color:var(--fg-soft);text-align:center;line-height:1.2;transition:color .25s}
   .logo-tile:hover span{color:var(--fg)}
+  /* One-colour logos: each file is a white silhouette used as a mask, so it takes the theme's text colour in dark and light. */
+  .logo-tile .logo-mark{display:block;flex:none;background-color:var(--fg-soft);-webkit-mask:var(--logo) center/contain no-repeat;mask:var(--logo) center/contain no-repeat;transition:background-color .25s}
+  .logo-tile:hover .logo-mark{background-color:var(--fg)}
   .refs-note{margin-top:40px;font-family:'IBM Plex Mono',monospace;font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--fg-faint);text-align:center}
 </style>
 <script>
-/* Reference carousel. Add logo:"<official file>" per entry to swap text for an image — official files only, never web-copied. */
+/* Reference carousel. One-colour logo files in logos/; w/h balance visual weight. Leave logo:"" to show the name as text. */
 const LOGO_CONFIG=[
-  {name:"Amulet Capital Partners",url:"https://amuletcapital.com",logo:""},
-  {name:"Broad Sky Partners",url:"https://broadskypartners.com",logo:""},
-  {name:"A Mylestone Group",url:"https://amylestonegroup.com",logo:""},
-  {name:"Applied Economics Clinic",url:"https://aeclinic.org",logo:""},
-  {name:"Emerald Cities Collaborative",url:"https://emeraldcities.org",logo:""},
-  {name:"Bridge House Advisors",url:"https://bridgehouseadvisors.com",logo:""}
+  {name:"Amulet Capital Partners",url:"https://amuletcapital.com",logo:"logos/amulet-capital-partners.svg",w:129,h:42},
+  {name:"Broad Sky Partners",url:"https://broadskypartners.com",logo:"logos/broad-sky-partners.svg",w:162,h:33},
+  {name:"A Mylestone Group",url:"https://amylestonegroup.com",logo:"logos/a-mylestone-group.png",w:192,h:28},
+  {name:"Applied Economics Clinic",url:"https://aeclinic.org",logo:"logos/applied-economics-clinic.png",w:188,h:29},
+  {name:"Emerald Cities Collaborative",url:"https://emeraldcities.org",logo:"logos/emerald-cities-collaborative.png",w:150,h:36},
+  {name:"Bridge House Advisors",url:"https://bridgehouseadvisors.com",logo:"logos/bridge-house-advisors.png",w:118,h:46}
 ];
 (function(){
   const track=document.getElementById("logoTrack");
-  const tile=function(x){
-    const inner=x.logo?'<img src="'+x.logo+'" alt="'+x.name+'" style="max-width:170px;max-height:46px;object-fit:contain">'
+  const tile=function(x,i){
+    const inner=x.logo?'<span class="logo-mark" role="img" aria-label="'+x.name+'" style="--logo:url('+x.logo+');width:'+x.w+'px;height:'+x.h+'px"></span>'
       :'<span>'+x.name+'</span>';
-    return '<a class="logo-tile" href="'+x.url+'" target="_blank" rel="noopener" title="'+x.name+'">'+inner+'</a>';
+    const dup=i>=items.length?' aria-hidden="true" tabindex="-1"':'';
+    return '<a class="logo-tile" href="'+x.url+'" target="_blank" rel="noopener" title="'+x.name+'"'+dup+'>'+inner+'</a>';
   };
   const items=LOGO_CONFIG.filter(function(x){return x&&x.name&&x.url;});
   track.innerHTML=items.concat(items).map(tile).join("");
