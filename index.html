@@ -872,13 +872,13 @@ document.querySelectorAll("[data-img]").forEach(function(el){
 /* ---------- chatbot (scripted keyword lookup — not generative) ---------- */
 (function initChat(){
   const KB = [
-    {keys:['method','vaat','v·a·a·t','process','framework','steps'],a:'The V·A·A·T Method™ is our proprietary four-step spine: <b>Visualize</b>, <b>Analyze</b>, <b>Act</b>, and <b>Transform</b> — mapped across the whole PE hold, from diligence to exit-readiness.'},
-    {keys:['who','buyer','clients','audience','for whom'],a:'VLG is built for lower-middle-market private equity — the GP or operating partner is our primary buyer. Portfolio-company CEOs and boards are where the work is delivered; government and enterprise are a served, follow-on market.'},
-    {keys:['what','do you do','service','offer','about','vlg'],a:'VLG is a leadership execution advisory for lower-middle-market private equity. We make the existing leadership team inside founder-led portfolio companies execution-ready to deliver the value-creation plan — reducing execution risk through the hold.'},
-    {keys:['engagement','solution','product','portfolio','diagnostic','integration','accelerator','diligence'],a:'Our engagements are productized, not hourly. On the PE side: Leadership Due Diligence™ (pre-close), 100-Day Leadership Integration™, the Portfolio CEO Accelerator™, and the flagship Leadership Value-Creation Diagnostic™ (in development).'},
-    {keys:['proof','result','case','evidence','data','outcome'],a:'Our posture is proof on request. We don\'t publish a client\'s results without consent. What we can show is the method, the sequence, and the judgment — ask for reference conversations directly.'},
+    {keys:['method','vaat','v·a·a·t','process','framework','steps'],a:'The V·A·A·T Method™ is our proprietary four-step spine: <b>Visualize</b>, <b>Analyze</b>, <b>Act</b>, and <b>Transform</b>. It runs across the whole PE hold, from diligence to exit-readiness.'},
+    {keys:['who','buyer','clients','audience','for whom','government','agency','agencies','federal'],a:'In private equity, VLG serves the lower middle market. The GP or operating partner is the buyer, and the work is delivered with portfolio-company CEOs and boards. VLG also serves federal, state and local government agencies from Washington, DC.'},
+    {keys:['what','do you do','service','offer','about','vlg'],a:'VLG is a leadership execution advisory for lower-middle-market private equity. We make the existing leadership team inside founder-led portfolio companies execution-ready to deliver the value-creation plan, and we reduce execution risk through the hold.'},
+    {keys:['engagement','solution','product','portfolio','diagnostic','integration','accelerator','diligence'],a:'Our engagements are productized, not hourly. On the PE side: Leadership Due Diligence™ before close, 100-Day Leadership Integration™ after it, and the Portfolio CEO Accelerator™ through the hold. Each begins with one question: where the existing leadership team is exposed against the value-creation plan. Naming that gap is the subject of a first confidential conversation.'},
+    {keys:['proof','result','case','evidence','data','outcome'],a:'Our posture is proof on request, not on display. We do not publish a client\'s results without consent. What we can show is the method, the sequence and the judgment. Ask for reference conversations directly.'},
     {keys:['price','cost','fee','how much','pricing','budget'],a:'Engagements are productized with defined scope and outcomes rather than billed by the hour, so pricing is set against a specific engagement. The right next step is a short, confidential conversation.'},
-    {keys:['coaching','training','search','recruit','difference'],a:'VLG isn\'t coaching, training, or executive search. V·A·A·T is a bounded, sequenced method that develops and integrates the team already in place, assessed against the value-creation plan itself.'},
+    {keys:['coaching','training','search','recruit','difference'],a:'VLG is not executive search and not a training program. V·A·A·T is a bounded, sequenced method that strengthens and integrates the team already in place, measured against the value-creation plan itself.'},
     {keys:['denise','founder','who runs','leadership','rosemond'],a:'Denise Rosemond is VLG\'s Founder & CEO and architect of the V·A·A·T Method™ — 20+ years advising leaders across PE-backed, public-sector, and founder-led organizations, and a doctoral candidate at Marymount University.'},
     {keys:['contact','talk','call','meet','email','reach','conversation','connect'],a:'The best next step is a short, confidential conversation. Use the private inquiry form on this page, or email Denise directly at ' + CONTACT_EMAIL + '.'}
   ];
@@ -921,7 +921,7 @@ document.querySelectorAll("[data-img]").forEach(function(el){
     cp.classList.add('open');
     if (!started) {
       started = true;
-      addMsg('Hello — I\'m the VLG assistant. I can explain the method, who we serve, our engagements, and how to start a confidential conversation. What would help?', 'bot');
+      addMsg('Hello. I\'m the VLG assistant. I can explain the method, who we serve, our engagements, and how to start a confidential conversation. What would help?', 'bot');
       chips();
     }
     ci.focus();
