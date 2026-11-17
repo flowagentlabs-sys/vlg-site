@@ -321,6 +321,7 @@
   .msg{max-width:85%;padding:11px 14px;border-radius:10px;font-size:.9rem;line-height:1.5}
   .msg.bot{background:var(--bg-raise);border:1px solid var(--card-line);color:var(--fg);align-self:flex-start;border-bottom-left-radius:3px}
   .msg.user{background:var(--indigo);color:var(--warm);align-self:flex-end;border-bottom-right-radius:3px}
+  .msg.bot a{color:inherit;text-decoration:underline;text-decoration-thickness:1px;text-decoration-color:var(--gold);text-underline-offset:3px}
   .chat-chips{display:flex;flex-wrap:wrap;gap:7px;padding:0 18px 12px}
   .chip{font-family:'Inter',system-ui,sans-serif;font-size:.78rem;color:var(--fg-soft);background:none;border:1px solid var(--line);border-radius:20px;padding:7px 12px;cursor:pointer;transition:border-color .2s,color .2s}
   .chip:hover{border-color:var(--gold);color:var(--fg)}
@@ -337,6 +338,9 @@
   .foot-col .eyebrow{color:var(--fg-faint)}
   .foot-col div{margin-top:8px;font-family:'IBM Plex Mono',monospace;font-size:.82rem}
   .foot-col div + div{color:var(--fg-faint)}
+  .foot-li{display:inline-flex;align-items:center;gap:8px;color:inherit;transition:color .25s}
+  .foot-li svg{width:15px;height:15px}
+  .foot-li:hover{color:var(--gold)}
   .foot-base{margin-top:56px;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;font-family:'IBM Plex Mono',monospace;font-size:.66rem;color:var(--fg-faint)}
 
   .pill{
@@ -669,7 +673,6 @@ const LOGO_CONFIG=[
         <h2>Bring us in before the first board.</h2>
         <p>Most engagements begin in the weeks around close, when the operating cadence still can be installed rather than repaired.</p>
         <div class="assur">Proof and reference conversations on request</div>
-        <div class="direct">Or reach the firm directly at <a href="mailto:denise@visionaryleadershipgroup.com">denise@visionaryleadershipgroup.com</a></div>
       </div>
       <div class="reveal" style="transition-delay:.15s">
         <form class="form" id="inquiryForm" action="https://formspree.io/f/mlgqkkpn" method="POST">
@@ -682,7 +685,7 @@ const LOGO_CONFIG=[
           <div class="field"><label for="f-context">Context</label><textarea id="f-context" name="context" rows="3" placeholder="A sentence on the situation — hold stage, portfolio company, the concern."></textarea></div>
           <button type="submit" class="btn-submit">Request a Conversation</button>
           <p class="form-status" id="formStatus"></p>
-          <p class="form-note">Handled with PE-grade discretion. Delivered to denise@visionaryleadershipgroup.com.</p>
+          <p class="form-note">Handled with PE-grade discretion. Denise replies personally.</p>
         </form>
       </div>
     </div>
@@ -696,7 +699,7 @@ const LOGO_CONFIG=[
       <div class="foot-col">
         <span class="eyebrow">Office</span>
         <div>Washington, DC</div>
-        <div><a href="mailto:denise@visionaryleadershipgroup.com" style="color:inherit">denise@visionaryleadershipgroup.com</a></div>
+        <div><a class="foot-li" href="https://www.linkedin.com/company/visionary-leadership-group/" target="_blank" rel="noopener" aria-label="Visionary Leadership Group on LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg><span>LinkedIn</span></a></div>
       </div>
       <div class="foot-col">
         <span class="eyebrow">Practice</span>
@@ -725,11 +728,10 @@ const LOGO_CONFIG=[
 <script>
 /* ==========================================================================
    CONFIG — contact form + chatbot
-   FORM_ENDPOINT blank = the form falls back to a mailto: link.
+   The inquiry form is the only contact route on the site (no email shown, owner 16 Nov 2026).
    Paste a Formspree/Web3Forms/Apps Script URL for a live backend.
    ========================================================================== */
 const FORM_ENDPOINT = "https://formspree.io/f/mlgqkkpn";
-const CONTACT_EMAIL = "denise@visionaryleadershipgroup.com";
 
 /* ==========================================================================
    MEDIA SWAP CONFIG — edit URLs here only.
@@ -880,7 +882,7 @@ document.querySelectorAll("[data-img]").forEach(function(el){
     {keys:['price','cost','fee','how much','pricing','budget'],a:'Engagements are productized with defined scope and outcomes rather than billed by the hour, so pricing is set against a specific engagement. The right next step is a short, confidential conversation.'},
     {keys:['coaching','training','search','recruit','difference'],a:'VLG is not executive search and not a training program. V·A·A·T is a bounded, sequenced method that strengthens and integrates the team already in place, measured against the value-creation plan itself.'},
     {keys:['denise','founder','who runs','leadership','rosemond'],a:'Denise Rosemond is VLG\'s Founder & CEO and architect of the V·A·A·T Method™ — 20+ years advising leaders across PE-backed, public-sector, and founder-led organizations, and a doctoral candidate at Marymount University.'},
-    {keys:['contact','talk','call','meet','email','reach','conversation','connect'],a:'The best next step is a short, confidential conversation. Use the private inquiry form on this page, or email Denise directly at ' + CONTACT_EMAIL + '.'}
+    {keys:['contact','talk','call','meet','email','reach','conversation','connect'],a:'The best next step is a short, confidential conversation. Use the <a href="#contact">private inquiry form</a> on this page. Denise replies personally and in confidence.'}
   ];
   const CHIPS = ['What does VLG do?','The V·A·A·T Method','Who is it for?','Talk to Denise'];
   const cl = document.getElementById('chatLaunch');
@@ -908,10 +910,11 @@ document.querySelectorAll("[data-img]").forEach(function(el){
     KB.forEach(function(i){
       let n = 0;
       i.keys.forEach(function(k){ if (s.includes(k)) n++; });
-      if (n > sc) { sc = n; best = i; }
+      /* a tie goes to the contact answer: "Talk to Denise" should lead to the inquiry form, not the bio */
+      if (n > sc || (n > 0 && n === sc && i.keys.indexOf('contact') > -1)) { sc = n; best = i; }
     });
     return best && sc > 0 ? best.a
-      : 'I can speak to the V·A·A·T Method, our position, engagements, and how to start a conversation. For your specific situation, a confidential note to Denise at ' + CONTACT_EMAIL + ' is the right step.';
+      : 'I can speak to the V·A·A·T Method, our position, engagements, and how to start a conversation. For your specific situation, the <a href="#contact">private inquiry form</a> on this page is the right step.';
   }
   function handle(t){
     addMsg(t, 'user');
@@ -926,6 +929,8 @@ document.querySelectorAll("[data-img]").forEach(function(el){
     }
     ci.focus();
   }
+  /* a link in a bot answer (e.g. to the inquiry form) closes the panel so it does not cover the form */
+  cp.addEventListener('click', function(e){ if (e.target.closest('a[href^="#"]')) cp.classList.remove('open'); });
   cl.addEventListener('click', function(){
     if (cp.classList.contains('open')) cp.classList.remove('open'); else openChat();
   });
